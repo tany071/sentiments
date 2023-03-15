@@ -2,12 +2,24 @@ import { type NextPage } from "next";
 import { useEffect, useState } from "react";
 import { nanoid } from "nanoid";
 
+
+
 const Profile: NextPage = () => {
   interface Notes {
     id: string;
     text: string;
     date: string;
   }
+
+  const[noteText,setNoteText]=useState('');
+
+
+  const handleChange= (event:any)=>{
+    setNoteText(event.target.value);
+  }
+
+  // const handleSaveClick = ()
+
 
   const [notes, setNotes] = useState([
     {
@@ -60,6 +72,13 @@ const Profile: NextPage = () => {
               </div>
             );
           })}
+          <div className="note new p-10 bg-blue-300 flex-col rounded-lg shadow-md border border-gray">
+            <textarea className="p-3 space-y-2 my-2 resize-none" placeholder="Type a note here" onChange={handleChange} value={noteText}></textarea>
+            <div className="note-footer">
+              <button className="save p-1 bg-black text-white rounded "  >Save</button>
+            </div>
+
+          </div>
         </div>
       </section>
     </>

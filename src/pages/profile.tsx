@@ -1,7 +1,7 @@
 import { type NextPage } from "next";
 import { useEffect, useState } from "react";
 import { nanoid } from "nanoid";
-
+import {MdDeleteForever} from "react-icons/md"
 const Profile: NextPage = () => {
   interface Notes {
     id: string;
@@ -10,6 +10,28 @@ const Profile: NextPage = () => {
   }
 
   const [noteText, setNoteText] = useState("");
+  const [notes, setNotes] = useState([
+    // {
+    //   id: nanoid(),
+    //   text: "This is my first note!",
+    //   date: "15/04/2021",
+    // },
+    // {
+    //   id: nanoid(),
+    //   text: "This is my second note!",
+    //   date: "21/04/2021",
+    // },
+    // {
+    //   id: nanoid(),
+    //   text: "This is my third note!",
+    //   date: "28/04/2021",
+    // },
+    // {
+    //   id: nanoid(),
+    //   text: "This is my new note!",
+    //   date: "30/04/2021",
+    // },
+  ]);
 
   const handleChange = (event: any) => {
     setNoteText(event.target.value);
@@ -17,64 +39,48 @@ const Profile: NextPage = () => {
 
   // const handleSaveClick = ()
   const AddNote = () => {
-    const date = new Date();
-    const newNote = {
-      id: nanoid(),
-      text: noteText,
-      date: date.toLocaleDateString(),
-    };
-    const newNotes = [...notes, newNote];
-    setNotes(newNotes);
-  };
-
-  const [notes, setNotes] = useState([
-    {
-      id: nanoid(),
-      text: "This is my first note!",
-      date: "15/04/2021",
-    },
-    {
-      id: nanoid(),
-      text: "This is my second note!",
-      date: "21/04/2021",
-    },
-    {
-      id: nanoid(),
-      text: "This is my third note!",
-      date: "28/04/2021",
-    },
-    {
-      id: nanoid(),
-      text: "This is my new note!",
-      date: "30/04/2021",
-    },
-  ]);
-  useEffect(() => {
-    const savedNotes: string | null = JSON.parse(
-      localStorage.getItem("notes-data") || "{}"
-    );
-    console.log("Successfully retrieved Notes");
-    console.log(savedNotes);
-  }, [notes]);
-  useEffect(() => {
-    const savedNotes: any = localStorage.setItem(
-      "notes-data",
-      JSON.stringify(notes)
-    );
-    if (savedNotes) {
-      setNotes(savedNotes);
-      console.log("Successfully Saved the State of Notes");
+    if (noteText.trim().length > 0) {
+      const date = new Date();
+      const newNote = {
+        id: nanoid(),
+        text: noteText,
+        date: date.toLocaleDateString(),
+      };
+      const newNotes = [...notes, newNote];
+      setNotes(newNotes);
     }
+  };
+const DeleteNote = (id:Number)=>{
+  const newNotes = notes.filter((note) => note.id !== id);
+  setNotes(newNotes);
+
+}
+  useEffect(() => {
+    const savedNotes:string | any =  JSON.parse(localStorage.getItem("notes-data"));
+
+    if (savedNotes[0]) {
+      setNotes(savedNotes);
+      console.log("Successfully retrieved Notes")
+      console.log(savedNotes);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("notes-data", JSON.stringify(notes));
+    console.log("Successfully Saved the State of Notes");
   }, [notes]);
   return (
     <>
-      <section className="h-[100vh] bg-gray-200 mx-10 my-10 flex items-start justify-start rounded-xl gap-5  ">
+      <section className="h-full bg-gray-200 mx-10 my-10 flex items-start justify-start rounded-xl gap-5  ">
         <div className="flex flex-wrap justify-start items-start mx-10 my-10 gap-10">
-          {notes.map((elem) => {
+          {notes.map((elem, index) => {
             return (
-              <div className="p-10 bg-yellow-200 flex-col rounded-lg shadow-md border border-gray ">
+              <div key={index} className="p-10 bg-yellow-200 flex-col rounded-lg shadow-md border border-gray ">
                 <h1 className="text-xl font-bold">{elem.text}</h1>
                 <h1 className="text-sm font-light">{elem.date}</h1>
+                <button onClick={()=>{
+                  DeleteNote(elem.id)
+                }}>delete</button>
               </div>
             );
           })}
@@ -84,6 +90,9 @@ const Profile: NextPage = () => {
               placeholder="Type a note here"
               onChange={handleChange}
               value={noteText}
+              onKeyDown={(e) => {
+                e.key === "Enter" ? AddNote() : "";
+              }}
             ></textarea>
             <div className="note-footer">
               <button

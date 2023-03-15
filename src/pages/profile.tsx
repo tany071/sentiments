@@ -1,7 +1,8 @@
 import { type NextPage } from "next";
 import { useEffect, useState } from "react";
 import { nanoid } from "nanoid";
-import {MdDeleteForever} from "react-icons/md"
+import { MdDeleteForever } from "react-icons/md";
+import Image from "next/image";
 const Profile: NextPage = () => {
   interface Notes {
     id: string;
@@ -50,17 +51,18 @@ const Profile: NextPage = () => {
       setNotes(newNotes);
     }
   };
-const DeleteNote = (id:Number)=>{
-  const newNotes = notes.filter((note) => note.id !== id);
-  setNotes(newNotes);
-
-}
+  const DeleteNote = (id: Number) => {
+    const newNotes = notes.filter((note) => note.id !== id);
+    setNotes(newNotes);
+  };
   useEffect(() => {
-    const savedNotes:string | any =  JSON.parse(localStorage.getItem("notes-data"));
+    const savedNotes: string | any = JSON.parse(
+      localStorage.getItem("notes-data")
+    );
 
     if (savedNotes[0]) {
       setNotes(savedNotes);
-      console.log("Successfully retrieved Notes")
+      console.log("Successfully retrieved Notes");
       console.log(savedNotes);
     }
   }, []);
@@ -75,12 +77,22 @@ const DeleteNote = (id:Number)=>{
         <div className="flex flex-wrap justify-start items-start mx-10 my-10 gap-10">
           {notes.map((elem, index) => {
             return (
-              <div key={index} className="p-10 bg-yellow-200 flex-col rounded-lg shadow-md border border-gray ">
+              <div
+                key={index}
+                className="p-5 bg-yellow-200 flex-col rounded-lg shadow-md border border-gray hover:scale-105 hover:ease-in duration-300 "
+              >
+                <div className="flex flex-row-reverse py-2">
+                  <button
+                    className="scale-[130%]"
+                    onClick={() => {
+                      DeleteNote(elem.id);
+                    }}
+                  >
+                    <MdDeleteForever />
+                  </button>
+                </div>
                 <h1 className="text-xl font-bold">{elem.text}</h1>
-                <h1 className="text-sm font-light">{elem.date}</h1>
-                <button onClick={()=>{
-                  DeleteNote(elem.id)
-                }}>delete</button>
+                <h1 className="text-xs font-light">{elem.date}</h1>
               </div>
             );
           })}

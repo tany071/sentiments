@@ -12,7 +12,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="mx-5">
-      <section className="mx-10 p-10 bg-gray-200 rounded-xl">
+        <section className="mx-10 p-10 bg-gray-200 rounded-xl">
           <div className="flex flex-col items-center justify-center space-y-10 ">
             <h1 className="bg-pink-500 h-40 w-40 ">Logo</h1>
             <h1 className="text-4xl font-bold">Sentiments</h1>

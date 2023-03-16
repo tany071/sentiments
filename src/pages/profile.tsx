@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import { nanoid } from "nanoid";
 import { MdDeleteForever } from "react-icons/md";
 import Image from "next/image";
+import cohere from "cohere-ai";
+import {Examples} from "./constants"
 const Profile: NextPage = () => {
   interface Notes {
     id: string;
@@ -39,11 +41,29 @@ const Profile: NextPage = () => {
     const newNotes = notes.filter((note) => note.id !== id);
     setNotes(newNotes);
   };
+  const analyzeSentiment = () => {
+    cohere.init("wDzuhl6zPspMAejVLonV2kwzch16UMWpNQByIhv3");
+    (async () => {
+      const response = await cohere.classify({
+        model: "small",
+        taskDescription: "",
+        outputIndicator: "",
+        inputs: [
+          "I was not feeling well today",
+          "I was very excited to go out with friends today",
+        ],
+        examples:Examples,
+      });
+      console.log(response.body.classifications[0]?.prediction);
+      console.log(response.body.classifications[1]?.prediction);
+    })();
+  };
   useEffect(() => {
     const data = JSON.parse(localStorage.getItem("Notes"));
     if (data) {
       setNotes(data);
     }
+    analyzeSentiment();
   }, []);
 
   //saving data to local storage

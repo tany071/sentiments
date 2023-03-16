@@ -18,37 +18,45 @@ const Home: NextPage = () => {
           <div className="flex flex-col items-center justify-center space-y-10 ">
             <h1 className="bg-pink-500 h-52 w-52 ">Logo</h1>
             <h1 className="text-5xl font-bold">Sentiments</h1>
-            <p className="text-center text-xl">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore
-              nulla voluptatem magnam rem hic reiciendis fugiat expedita ut
-              eligendi, rerum similique commodi vero. Architecto, id sit. Dolore
-              incidunt maxime porro!
-            </p>
-          </div>
-        </section>
-        <section className="p-10">
-          <div className="flex justify-between">
-           <div className="flex-col justify-center place-items-center bg-gray-200 p-10 rounded-xl space-y-5 ">
-            <h1 className=" text-xl font-bold ">What do we do?</h1>
-            {/* <p className="">
+            <div className="text-xl">
+            <Typewriter
+                 options={{
+                    loop: true,
+                  }}
+                  onInit={(typewriter) => {
+                           typewriter.typeString('Lorem ipsum dolor sit')
+                           .pauseFor(2500)
+                          .deleteAll()
+                          .start();
+                  }}
+              />
+              </div>
+ 
+
+            {/* <p className="text-center text-xl">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore
               nulla voluptatem magnam rem hic reiciendis fugiat expedita ut
               eligendi, rerum similique commodi vero. Architecto, id sit. Dolore
               incidunt maxime porro!
             </p> */}
-              <Typewriter
-                 options={{
-                    loop: true,
-                  }}
-                  onInit={(typewriter) => {
-                           typewriter.typeString('loremipsum')
-                           .pauseFor(1500)
-                          .deleteAll()
-                          .start();
-                  }}
-              />
+          </div>
+        </section>
+        <section className="p-10">
+          <div className="flex justify-between  bg-gray-200 p-10 rounded-xl space-y-5 ">
+           <div className="flex-col justify-center place-items-center">
+            <h1 className=" text-2xl font-bold py-12 px-10">What do we do?</h1>
+            <p className="text-lg px-10">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore
+              nulla voluptatem magnam rem hic reiciendis fugiat expedita ut
+              eligendi, rerum similique commodi vero. Architecto, id sit. Dolore
+              incidunt maxime porro!
+            </p>
+
 
       
+           </div>
+           <div className=" h-80 w-5/6   bg-amber-200">
+
            </div>
           </div>
         </section>

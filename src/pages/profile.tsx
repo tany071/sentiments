@@ -11,29 +11,12 @@ const Profile: NextPage = () => {
   }
 
   const [noteText, setNoteText] = useState("");
-  const [notes, setNotes] = useState([
-    // {
-    //   id: nanoid(),
-    //   text: "This is my first note!",
-    //   date: "15/04/2021",
-    // },
-    // {
-    //   id: nanoid(),
-    //   text: "This is my second note!",
-    //   date: "21/04/2021",
-    // },
-    // {
-    //   id: nanoid(),
-    //   text: "This is my third note!",
-    //   date: "28/04/2021",
-    // },
-    // {
-    //   id: nanoid(),
-    //   text: "This is my new note!",
-    //   date: "30/04/2021",
-    // },
-  ]);
-
+  const [notes, setNotes] = useState([]);
+  // {
+  //   id: nanoid(),
+  //   text: "This is my first note!",
+  //   date: "15/04/2021",
+  // },
   const handleChange = (event: any) => {
     setNoteText(event.target.value);
   };
@@ -49,6 +32,7 @@ const Profile: NextPage = () => {
       };
       const newNotes = [...notes, newNote];
       setNotes(newNotes);
+      localStorage.setItem("Notes", JSON.stringify(notes));
     }
   };
   const DeleteNote = (id: Number) => {
@@ -56,21 +40,19 @@ const Profile: NextPage = () => {
     setNotes(newNotes);
   };
   useEffect(() => {
-    const savedNotes: string | any = JSON.parse(
-      localStorage.getItem("notes-data")
-    );
-
-    if (savedNotes) {
-      setNotes(savedNotes);
-      console.log("Successfully retrieved Notes");
-      console.log(savedNotes);
+    const data = JSON.parse(localStorage.getItem("Notes"));
+    if (data) {
+      setNotes(data);
     }
   }, []);
 
+  //saving data to local storage
   useEffect(() => {
-    localStorage.setItem("notes-data", JSON.stringify(notes));
-    console.log("Successfully Saved the State of Notes");
+    if (notes.length > 0) {
+      localStorage.setItem("Notes", JSON.stringify(notes));
+    }
   }, [notes]);
+
   return (
     <>
       <section className="h-full bg-gray-200 mx-10 my-10 flex items-start justify-start rounded-xl gap-5  ">

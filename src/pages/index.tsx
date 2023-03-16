@@ -12,8 +12,20 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="mx-5">
+      <section className="mx-10 p-10 bg-gray-200 rounded-xl">
+          <div className="flex flex-col items-center justify-center space-y-10 ">
+            <h1 className="bg-pink-500 h-40 w-40 ">Logo</h1>
+            <h1 className="text-4xl font-bold">Sentiments</h1>
+            <p className="text-center text-lg">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore
+              nulla voluptatem magnam rem hic reiciendis fugiat expedita ut
+              eligendi, rerum similique commodi vero. Architecto, id sit. Dolore
+              incidunt maxime porro!
+            </p>
+          </div>
+        </section>
         <section className="p-10">
-          <div className="flex-col bg-gray-200 p-10 rounded-xl space-y-5 ">
+          <div className="flex-col justify-center place-items-center bg-gray-200 p-10 rounded-xl space-y-5 ">
             <h1 className=" text-xl font-bold ">SENTIMENTS</h1>
             <p className="">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore

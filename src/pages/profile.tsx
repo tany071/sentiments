@@ -60,7 +60,7 @@ const Profile: NextPage = () => {
       localStorage.getItem("notes-data")
     );
 
-    if (savedNotes[0]) {
+    if (savedNotes) {
       setNotes(savedNotes);
       console.log("Successfully retrieved Notes");
       console.log(savedNotes);

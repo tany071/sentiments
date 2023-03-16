@@ -4,7 +4,7 @@ import Link from "next/link";
 const Navbar: NextComponentType = () => {
   return (
     <div className="mb-20">
-      <nav className="bg-red-300 border-gray-200 px-2 sm:px-4 py-2 top-0 left-0 right-0 fixed  ">
+      <nav className="bg-fuchsia-900 border-gray-200 px-2 sm:px-4 py-2 top-0 left-0 right-0 fixed  ">
         <div className="container flex flex-wrap items-center justify-between mx-auto">
           <a href="#" className="flex items-center">
             <span className="self-center text-2xl font-bold whitespace-nowrap dark:text-white  ">
@@ -33,7 +33,7 @@ const Navbar: NextComponentType = () => {
             </svg>
           </button>
           <div className="hidden w-full md:block md:w-auto" id="navbar-default">
-            <ul className="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800  dark:border-gray-700 shadow-sm " >
+            <ul className="flex flex-col p-4 mt-4 border border-fuchsia-900 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800  dark:border-gray-700 shadow-sm " >
               <li>
                 <Link
                   href="/"

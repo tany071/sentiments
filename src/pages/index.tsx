@@ -16,16 +16,16 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className=" ">
-        <section className="mx-10 p-10 bg-emerald-300 border-8 border-fuchsia-900 rounded-xl">
+        <section className="mx-10 p-10 bg-white border-8 border-fuchsia-900 rounded-xl">
           <div className="flex flex-col items-center justify-center space-y-10 ">
-            <h1 className="bg-pink-500 h-52 w-52 "></h1>
+            <Image src="/landingIcon.gif" alt="Aunty" width={500} height={500}/>
             <h1 className="text-5xl font-bold">Sentiments</h1>
             <div className="text-2xl">
             <Typewriter
                  options={{
                     loop: true,
                   }}
-                  onInit={(typewriter) => {
+                  onInit={(typewriter:any) => {
                            typewriter.typeString('Lorem ipsum dolor sit')
                            .pauseFor(2500)
                           .deleteAll()

@@ -3,18 +3,18 @@ import Link from "next/link";
 
 const Navbar: NextComponentType = () => {
   return (
-    <div className="mb-20">
-      <nav className="bg-fuchsia-900 border-gray-200 px-2 sm:px-4 py-2 top-0 left-0 right-0 fixed  ">
+    <div className="mb-10">
+      <nav className="bg-white px-2 sm:px-4 py-2 top-0 left-0 right-0 fixed  ">
         <div className="container flex flex-wrap items-center justify-between mx-auto">
           <a href="#" className="flex items-center">
-            <span className="self-center text-2xl font-bold whitespace-nowrap dark:text-white  ">
+            <span className="self-center text-2xl px-4 font-bold whitespace-nowrap dark:text-black  ">
               Sentiments
             </span>
           </a>
           <button
             data-collapse-toggle="navbar-default"
             type="button"
-            className="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-200  font-bold dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+            className="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-900  font-bold dark:hover:bg-gray-700"
             aria-controls="navbar-default"
             aria-expanded="false"
           >
@@ -33,7 +33,7 @@ const Navbar: NextComponentType = () => {
             </svg>
           </button>
           <div className="hidden w-full md:block md:w-auto" id="navbar-default">
-            <ul className="flex flex-col p-4 mt-4 border border-fuchsia-900 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800  dark:border-gray-700 shadow-sm " >
+            <ul className="flex flex-col p-4 mt-4 border border-fuchsia-900 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white  " >
               <li>
                 <Link
                   href="/"

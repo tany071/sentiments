@@ -16,17 +16,16 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className=" ">
-        <section className="mx-10 p-10 bg-emerald-300 border-8 border-fuchsia-900 rounded-xl">
+        <section className="mx-10 p-10 bg-white rounded-xl">
           <div className="flex flex-col items-center justify-center space-y-10 ">
-            {/* <h1 className="bg-pink-500 h-52 w-52 "></h1> */}
-            <Image src="/logo.png" alt=" " width={100} height={100}></Image>
-            <h1 className="text-5xl font-bold">Sentiments</h1>
+            <Image src="/landingIcon.gif" alt="Aunty" width={450} height={450}/>
+            <h1 className="text-5xl font-bold ">Sentiments</h1>
             <div className="text-2xl">
             <Typewriter
                  options={{
                     loop: true,
                   }}
-                  onInit={(typewriter) => {
+                  onInit={(typewriter:any) => {
                            typewriter.typeString('Lorem ipsum dolor sit')
                            .pauseFor(2500)
                           .deleteAll()
@@ -37,8 +36,8 @@ const Home: NextPage = () => {
  
           </div>
         </section>
-        <section className="p-10">
-          <div className="flex justify-between lg:flex-nowrap flex-wrap bg-amber-300 border-8 border-fuchsia-900  p-10 rounded-xl space-y-5 ">
+        <section className="p-10 ">
+          <div className="flex justify-between lg:flex-nowrap flex-wrap p-10 rounded-xl space-y-5 ">
            <div className="flex-col justify-center place-items-center">
             <h1 className=" text-3xl font-bold py-12 px-10">What do we do?</h1>
             <p className="text-xl px-10">
@@ -48,7 +47,8 @@ const Home: NextPage = () => {
               incidunt maxime porro!
             </p>      
            </div>
-           <div className=" h-80 w-5/6   bg-black"></div>
+           {/* <div className=" h-80 w-5/6   bg-black"></div> */}
+           <Image src="/landing2.gif" alt="sooraj" width={450} height={450}/>
           </div>
         </section>
 
@@ -64,6 +64,7 @@ const Home: NextPage = () => {
             </p>      
            </div>
            <div className=" h-80 w-5/6   bg-black"></div>
+           
           </div>
         </section>
  

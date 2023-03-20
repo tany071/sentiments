@@ -18,7 +18,8 @@ const Home: NextPage = () => {
       <main className=" ">
         <section className="mx-10 p-10 bg-emerald-300 border-8 border-fuchsia-900 rounded-xl">
           <div className="flex flex-col items-center justify-center space-y-10 ">
-            <h1 className="bg-pink-500 h-52 w-52 "></h1>
+            {/* <h1 className="bg-pink-500 h-52 w-52 "></h1> */}
+            <Image src="/logo.png" alt=" " width={100} height={100}></Image>
             <h1 className="text-5xl font-bold">Sentiments</h1>
             <div className="text-2xl">
             <Typewriter

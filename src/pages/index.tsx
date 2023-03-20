@@ -53,7 +53,7 @@ const Home: NextPage = () => {
         </section>
 
         <section className="p-10">
-          <div className="flex flex-row-reverse justify-between lg:flex-nowrap flex-wrap bg-red-400 border-8 border-fuchsia-900  p-10 rounded-xl space-y-5 ">
+          <div className="flex flex-row-reverse justify-between lg:flex-nowrap flex-wrap   p-10 rounded-xl space-y-5 ">
            <div className="flex-col  justify-center place-items-center">
             <h1 className=" text-3xl font-bold py-12 px-10">Purpose & Vision</h1>
             <p className="text-xl px-10">
@@ -63,7 +63,8 @@ const Home: NextPage = () => {
               incidunt maxime porro!
             </p>      
            </div>
-           <div className=" h-80 w-5/6   bg-black"></div>
+           {/* <div className=" h-80 w-5/6   bg-black"></div> */}
+           <Image src="/landing3.gif" alt="dartgame" width={350} height={350}/>
            
           </div>
         </section>

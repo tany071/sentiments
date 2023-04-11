@@ -6,11 +6,11 @@ const Navbar: NextComponentType = () => {
     <div className="mb-20">
       <nav className="bg-white px-2 sm:px-4 py-2 top-0 left-0 right-0 fixed  ">
         <div className="container flex flex-wrap items-center justify-between mx-auto">
-          <a href="#" className="flex items-center">
+          <Link href="/" className="flex items-center">
             <span className="self-center text-2xl px-4 font-bold whitespace-nowrap dark:text-black  ">
               Sentiments
             </span>
-          </a>
+          </Link>
           <button
             data-collapse-toggle="navbar-default"
             type="button"

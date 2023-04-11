@@ -4,7 +4,7 @@ import { nanoid } from "nanoid";
 import { MdDeleteForever } from "react-icons/md";
 import Image from "next/image";
 import cohere from "cohere-ai";
-import {Examples} from "./constants"
+import { Examples } from "./constants";
 const Profile: NextPage = () => {
   interface Notes {
     id: string;
@@ -41,21 +41,36 @@ const Profile: NextPage = () => {
     const newNotes = notes.filter((note) => note.id !== id);
     setNotes(newNotes);
   };
-  const analyzeSentiment = () => {
+  const notesData = async () => {
+    let res = await localStorage.getItem("Notes");
+    res = JSON.parse(res);
+    let notesArray = [];
+    for(let iter =0; iter < res.length;iter++){
+      notesArray.push(res[iter]['text'])
+    }
+    // console.log(noteText)
+ return notesArray;
+    // let notesArray =
+  };
+  const analyzeSentiment = async () => {
+    let NotesData = await notesData();
     cohere.init("wDzuhl6zPspMAejVLonV2kwzch16UMWpNQByIhv3");
     (async () => {
       const response = await cohere.classify({
         model: "small",
-        taskDescription: "",
-        outputIndicator: "",
-        inputs: [
-          "I was not feeling well today",
-          "I was very excited to go out with friends today",
-        ],
-        examples:Examples,
+        inputs: NotesData,
+        examples: Examples,
       });
-      console.log(response.body.classifications[0]?.prediction);
-      console.log(response.body.classifications[1]?.prediction);
+      // for(let i =0 ; i <NotesData.length;i++){
+      //   console.log(response.body.classifications[i]);
+      // }
+      let analyzedData :any = [];
+      response.body.classifications.forEach((e,index)=>{
+        analyzedData.push(e.labels.positive?.confidence)
+      })
+      console.log(analyzedData)
+      localStorage.setItem("analyzedData",analyzedData)
+
     })();
   };
   useEffect(() => {
@@ -63,13 +78,14 @@ const Profile: NextPage = () => {
     if (data) {
       setNotes(data);
     }
-    analyzeSentiment();
+    // analyzeSentiment();
   }, []);
 
   //saving data to local storage
   useEffect(() => {
     if (notes.length > 0) {
       localStorage.setItem("Notes", JSON.stringify(notes));
+      analyzeSentiment();
     }
   }, [notes]);
 

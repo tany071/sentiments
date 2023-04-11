@@ -33,7 +33,7 @@ const Navbar: NextComponentType = () => {
             </svg>
           </button>
           <div className="hidden w-full md:block md:w-auto" id="navbar-default">
-            <ul className="flex flex-col p-4 mt-4 border border-fuchsia-900 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white  " >
+            <ul className="flex flex-col p-4 mt-4 border border-fuchsia-900 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white  ">
               <li>
                 <Link
                   href="/"
@@ -66,6 +66,14 @@ const Navbar: NextComponentType = () => {
                   className="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-900 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0   font-bold "
                 >
                   Profile
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/dashboard"
+                  className="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-900 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0   font-bold "
+                >
+                  Dashboard
                 </Link>
               </li>
               <li>

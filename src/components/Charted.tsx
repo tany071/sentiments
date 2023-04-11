@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Chart as ChartJs,
   CategoryScale,
@@ -30,23 +30,32 @@ interface Props {
 }
 
 const Charted: NextPage<Props> = ({ height, width }) => {
+  const [chartData, setChartData] = useState([]);
+  const chartValues = async () => {
+    let res = await localStorage.getItem("analyzedData");
+    res = res?.split(",");
+
+    setChartData(res);
+  };
+
   const data = {
     labels: [
-      "Week 1",
-      "Week 2",
-      "Week 3",
-      "Week 4",
-      "Week 5",
-      "Week 6",
-      "Week 7",
-      "Week 8",
-      "Week 9",
-      "Week 10",
+      "Day 0",
+      "Day 1",
+      "Day 2",
+      "Day 3",
+      "Day 4",
+      "Day 5",
+      "Day 6",
+      "Day 7",
+      "Day 8",
+      "Day 9",
+      "Day 10",
     ],
     datasets: [
       {
         label: "User Sentiment",
-        data: [40, 45, 50, 45, 60, 55, 50, 55, 65, 55],
+        data: chartData,
         fill: false,
         borderColor: "rgb(75, 192, 192)",
         tension: 0.3,
@@ -60,7 +69,9 @@ const Charted: NextPage<Props> = ({ height, width }) => {
       },
     },
   };
-
+  useEffect(() => {
+    chartValues();
+  }, []);
   return (
     <div className="bg-gray-50 shadow-xl border-gray-200 border p-5 rounded-xl">
       <Line data={data} width={width} options={options} height={height} />

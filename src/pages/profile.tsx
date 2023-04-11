@@ -45,11 +45,11 @@ const Profile: NextPage = () => {
     let res = await localStorage.getItem("Notes");
     res = JSON.parse(res);
     let notesArray = [];
-    for(let iter =0; iter < res.length;iter++){
-      notesArray.push(res[iter]['text'])
+    for (let iter = 0; iter < res.length; iter++) {
+      notesArray.push(res[iter]["text"]);
     }
     // console.log(noteText)
- return notesArray;
+    return notesArray;
     // let notesArray =
   };
   const analyzeSentiment = async () => {
@@ -64,13 +64,15 @@ const Profile: NextPage = () => {
       // for(let i =0 ; i <NotesData.length;i++){
       //   console.log(response.body.classifications[i]);
       // }
-      let analyzedData :any = [];
-      response.body.classifications.forEach((e,index)=>{
-        analyzedData.push(e.labels.positive?.confidence)
-      })
-      console.log(analyzedData)
-      localStorage.setItem("analyzedData",analyzedData)
-
+      let analyzedData: any = [];
+      analyzedData.push(0);
+      response.body.classifications.forEach((e, index) => {
+        let parsedSentiment = parseFloat(e.labels.positive?.confidence) * 100;
+        parsedSentiment>=90?parsedSentiment=parsedSentiment-10:parsedSentiment
+        analyzedData.push(parsedSentiment);
+      });
+      console.log(analyzedData);
+      localStorage.setItem("analyzedData", analyzedData);
     })();
   };
   useEffect(() => {

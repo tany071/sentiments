@@ -56,7 +56,7 @@ const Navbar: NextComponentType = () => {
                   href="/service"
                   className="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-900 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0   font-bold "
                 >
-                  Services
+                  Profile
                 </Link>
               </li>
 
@@ -65,7 +65,7 @@ const Navbar: NextComponentType = () => {
                   href="/profile"
                   className="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-900 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0   font-bold "
                 >
-                  Profile
+                  Journal
                 </Link>
               </li>
               <li>
@@ -77,12 +77,12 @@ const Navbar: NextComponentType = () => {
                 </Link>
               </li>
               <li>
-                <a
-                  href="#"
+              <Link
+                  href="/contact"
                   className="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-900 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0   font-bold "
                 >
-                  Contact
-                </a>
+                  Get Help
+                </Link>
               </li>
             </ul>
           </div>

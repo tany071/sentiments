@@ -45,7 +45,7 @@ const Profile: NextPage = () => {
     let res = await localStorage.getItem("Notes");
     res = JSON.parse(res);
     let notesArray = [];
-    for (let iter = 0; iter < res.length; iter++) {
+    for (let iter: Number = 0; iter < res.length; iter++) {
       notesArray.push(res[iter]["text"]);
     }
     // console.log(noteText)
@@ -61,14 +61,19 @@ const Profile: NextPage = () => {
         inputs: NotesData,
         examples: Examples,
       });
-      // for(let i =0 ; i <NotesData.length;i++){
+      // for (let i = 0; i < NotesData.length; i++) {
       //   console.log(response.body.classifications[i]);
       // }
       let analyzedData: any = [];
       analyzedData.push(0);
       response.body.classifications.forEach((e, index) => {
         let parsedSentiment = parseFloat(e.labels.positive?.confidence) * 100;
-        parsedSentiment>=90?parsedSentiment=parsedSentiment-10:parsedSentiment
+        parsedSentiment >= 90
+          ? (parsedSentiment = parsedSentiment - 10)
+          : parsedSentiment;
+          parsedSentiment <= 10
+          ? (parsedSentiment = parsedSentiment + 15)
+          : parsedSentiment;
         analyzedData.push(parsedSentiment);
       });
       console.log(analyzedData);

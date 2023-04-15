@@ -4,7 +4,7 @@ import { nanoid } from "nanoid";
 import { MdDeleteForever } from "react-icons/md";
 import Image from "next/image";
 import cohere from "cohere-ai";
-import { Examples } from "./constants";
+import { Examples } from "../utils/constants";
 const Profile: NextPage = () => {
   interface Notes {
     id: string;

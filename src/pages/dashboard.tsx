@@ -1,16 +1,27 @@
 import { NextPage } from "next";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import Charted from "../components/Charted";
 const dashboard: NextPage = () => {
   const [sentiment, setSentimnet] = useState([]);
+  const [profile ,  setProfile] = useState({
+    name:"User"
+  });
   const fetchAnalyzedData = async () => {
     let res = await localStorage.getItem("analyzedData");
     let data = res?.split(",");
     setSentimnet(data);
   };
+const fetchProfile = async () => {
+let res = await localStorage.getItem("profile");
+let data = JSON.parse(res);
+if(data){
+  setProfile(data);
+}
+}
   useEffect(() => {
     fetchAnalyzedData();
+    fetchProfile();
   }, []);
   return (
     <>
@@ -19,7 +30,10 @@ const dashboard: NextPage = () => {
           {/* <Image className=" h-[20rem] w-[20rem] " src="/analytics.gif" alt="img" width={400} height={100}/> */}
           <div className="md:w-1/2 w-full flex flex-col">
             <h1 className="font-bold text-5xl">
-              This is your sentiment report📝
+              Hi {profile.name}
+            </h1>
+            <h1 className="font-bold text-5xl">
+              This is your sentiment report📝 
             </h1>
             <p className="mt-10 text-xl font-light">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Id rem

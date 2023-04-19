@@ -36,12 +36,9 @@ if(data){
               This is your sentiment report📝 
             </h1>
             <p className="mt-10 text-xl font-light">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Id rem
-              ipsa cupiditate eligendi consectetur, asperiores ad, cum dolorem
-              dolores magnam nemo minus delectus nam eum tenetur voluptatibus
-              voluptatem voluptas laboriosam quia! Excepturi nam at hic ab nihil
-              possimus, amet sint! Molestiae esse possimus officiis ullam maxime
-              unde distinctio laudantium ad.
+            The purpose of this report is to analyze the mood of a patient through his journal entries using Natural Language Processing (NLP),
+            The patient has been writing daily journal entries for the past month, and we have used NLP to analyze the entries and predict his mood.
+            The patient's journal entries were analyzed using NLP techniques to identify the sentiment of each entry. We used a pre-trained sentiment analysis model that is capable of identifying positive, negative, and neutral sentiments. The sentiment of each entry was then plotted on a graph to visualize the patient's mood over the past few days. 
             </p>
           </div>
           <div className="  z-[0] h-full scale-[65%] md:scale-100">
